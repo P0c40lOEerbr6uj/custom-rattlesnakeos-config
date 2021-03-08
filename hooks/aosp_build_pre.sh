@@ -2,9 +2,6 @@
 
 cd "${AOSP_BUILD_DIR}"
 
-# apply microg sigspoof patch
-echo "applying microg sigspoof patch"
-patch -p1 --no-backup-if-mismatch < "platform/prebuilts/microg/00002-microg-sigspoof.patch"
 
 # apply community patches
 echo "applying community patch 00001-global-internet-permission-toggle.patch"
@@ -17,3 +14,7 @@ patch -p1 --no-backup-if-mismatch < "${community_patches_dir}/00001-global-inter
 custom_hosts_file="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
 echo "applying custom hosts file ${custom_hosts_file}"
 retry wget -q -O "${AOSP_BUILD_DIR}/system/core/rootdir/etc/hosts" "${custom_hosts_file}"
+
+# Add custom CA
+CA="https://raw.githubusercontent.com/P0c40lOEerbr6uj/custom-rattlesnakeos-config/master/f4ae343e.0"
+wget $CA -P "${AOSP_BUILD_DIR}/system/ca-certificates/files/"
