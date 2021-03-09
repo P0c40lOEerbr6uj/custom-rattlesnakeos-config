@@ -14,6 +14,7 @@ patch -p1 --no-backup-if-mismatch < "${community_patches_dir}/00001-global-inter
 custom_hosts_file="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
 echo "applying custom hosts file ${custom_hosts_file}"
 retry wget -q -O "${AOSP_BUILD_DIR}/system/core/rootdir/etc/hosts" "${custom_hosts_file}"
+sed -i '1s;^;192.168.2.1 local-domain.com\n;' "${AOSP_BUILD_DIR}/system/core/rootdir/etc/hosts"
 
 # Add custom CA
 CA="https://raw.githubusercontent.com/P0c40lOEerbr6uj/custom-rattlesnakeos-config/master/f4ae343e.0"
