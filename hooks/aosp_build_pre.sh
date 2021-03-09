@@ -17,5 +17,5 @@ retry wget -q -O "${AOSP_BUILD_DIR}/system/core/rootdir/etc/hosts" "${custom_hos
 sed -i '1s;^;192.168.2.1 local-domain.com\n;' "${AOSP_BUILD_DIR}/system/core/rootdir/etc/hosts"
 
 # Add custom CA
-CA="https://raw.githubusercontent.com/P0c40lOEerbr6uj/custom-rattlesnakeos-config/master/f4ae343e.0"
+CA="https://raw.githubusercontent.com/P0c40lOEerbr6uj/custom-rattlesnakeos-config/master/07eda8fa.0"
 wget $CA -P "${AOSP_BUILD_DIR}/system/ca-certificates/files/"
