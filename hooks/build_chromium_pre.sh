@@ -68,6 +68,7 @@ cd "${CHROMIUM_BUILD_DIR}/src"
 
 # Apply Bromite patches with "git am"
 echo "Applying Bromite patches with git am"
+rm ${bromite_dir}/build/patches/Add-DuckDuckGo-Lite-search-engine.patch
 git am --whitespace=nowarn ${bromite_dir}/build/patches/*.patch
 echo "Patches have been applied"
 
