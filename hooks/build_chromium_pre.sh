@@ -62,15 +62,12 @@ gn gen out/Default
 # Clone Bromite repo
 echo "Cloning Bromite repository"
 bromite_dir="${ROOT_DIR}/bromite"
-git clone --branch 88.0.4324.185 https://github.com/bromite/bromite.git "${bromite_dir}"
+git clone --branch ${CHROMIUM_REVISION} https://github.com/bromite/bromite.git "${bromite_dir}"
 cd "${CHROMIUM_BUILD_DIR}/src"
 
-#Stop script to allow debugging
-sleep 7200
 # Apply Bromite patches with "git am"
 echo "Applying Bromite patches with git am"
-rm ${bromite_dir}/build/patches/Add-DuckDuckGo-Lite-search-engine.patch
-git am --whitespace=nowarn ${bromite_dir}/build/patches/*.patch
+git am --whitespace=nowarn $(sed "s\^\ ${bromite_dir}/build/patches/\g" ${bromite_dir}/build/bromite_patches_list.txt | tr '\n' ' ')
 echo "Patches have been applied"
 
 
