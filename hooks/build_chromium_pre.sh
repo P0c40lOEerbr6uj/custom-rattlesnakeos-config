@@ -2,12 +2,12 @@
 
 
 # Add args to out/Default/args.gn
+# GN Arguments list as retrieved from Bromite repository (TODO: should be retrieved from repository dynamically)
 echo "Starting to patch Bromite"
 echo "Extending args.gn"
 while read p; do
-  ARG=$p
-  #echo $ARG
-  if [ -z "$(grep -io "$ARG" out/Default/args.gn)" ]
+  #If the argument is not in args.gn, then append it to args.gn
+  if [ -z "$(grep -io "$p" out/Default/args.gn)" ]
   then
 	echo $p
   fi
