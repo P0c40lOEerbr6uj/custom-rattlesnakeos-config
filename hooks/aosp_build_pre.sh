@@ -19,7 +19,7 @@ custom_hosts_file="https://raw.githubusercontent.com/StevenBlack/hosts/master/ho
 echo "applying custom hosts file ${custom_hosts_file}"
 retry wget -q -O "${AOSP_BUILD_DIR}/system/core/rootdir/etc/hosts" "${custom_hosts_file}"
 #Add personal local network domain to hostsfile
-sed -i '1s;^;192.168.2.1 local-domain.com\n;' "${AOSP_BUILD_DIR}/system/core/rootdir/etc/hosts"
+sed -i '1s;^;192.168.188.2 local-domain.com\n;' "${AOSP_BUILD_DIR}/system/core/rootdir/etc/hosts"
 
 # Add custom CA
 CA="https://raw.githubusercontent.com/P0c40lOEerbr6uj/custom-rattlesnakeos-config/master/07eda8fa.0"
