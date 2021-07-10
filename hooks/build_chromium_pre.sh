@@ -9,7 +9,7 @@ while read p; do
   #If the argument is not in args.gn, then append it to args.gn
   if [ -z "$(grep -io "$p" out/Default/args.gn)" ]
   then
-	echo $p
+	#echo $p
   fi
 done <<EOF >> out/Default/args.gn
 blink_symbol_level = 1
@@ -52,18 +52,18 @@ EOF
 
 echo "args.gn has been succsessfully extended"
 echo "Running gn gen"
-gn gen out/Default
+#gn gen out/Default
 
 # Clone Bromite repo
 echo "Cloning Bromite repository"
 bromite_dir="${ROOT_DIR}/bromite"
-git clone --branch ${CHROMIUM_REVISION} https://github.com/bromite/bromite.git "${bromite_dir}"
+#git clone --branch ${CHROMIUM_REVISION} https://github.com/bromite/bromite.git "${bromite_dir}"
 cd "${CHROMIUM_BUILD_DIR}/src"
 
 # Apply Bromite patches with "git am"
-echo "Applying Bromite patches with git am"
-git am --whitespace=nowarn $(sed "s\^\ ${bromite_dir}/build/patches/\g" ${bromite_dir}/build/bromite_patches_list.txt | tr '\n' ' ')
-echo "Patches have been applied"
+#echo "Applying Bromite patches with git am"
+#git am --whitespace=nowarn $(sed "s\^\ ${bromite_dir}/build/patches/\g" ${bromite_dir}/build/bromite_patches_list.txt | tr '\n' ' ')
+#echo "Patches have been applied"
 
 
 # apply patches prior to chromium build. note: this increases likelyhood of build failures.
